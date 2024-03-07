@@ -1,0 +1,21 @@
+.painel-senhas {
+  padding: 50px;
+  background: #FAFBFF;
+}
+
+.quadardo {
+  display: flex;
+  gap: 100px;
+}
+
+.quadradoSenha {
+  width: 862px;
+  height: 924px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.relogio {
+  margin-bottom: 40px;
+}
