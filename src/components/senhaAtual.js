@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import './CSS/senhaAtual.css';
 
 function SenhaAtual() {
+    const API_URL = "http://ec2-3-85-49-103.compute-1.amazonaws.com:8080"
+
     const [senha, setSenha] = useState('...');
     const [localDeAtendimento, setLocalDeAtendimento] = useState('...');
     const [localParaTeste, setLocalParaTeste] = useState('');
@@ -11,7 +13,7 @@ function SenhaAtual() {
             localDeAtendimento: localParaTeste || localDeAtendimento,
         };
 
-        fetch('http://ec2-3-85-49-103.compute-1.amazonaws.com:8080/atendimento/espera', {
+        fetch(API_URL + '/atendimento/espera', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -25,10 +27,6 @@ function SenhaAtual() {
         })
         .catch((err) => console.log(err));
     };
-
-    useEffect(() => {
-        buscarUltimoAtendimento();
-    }, [buscarUltimoAtendimento]);
 
     return (
         <section className="quadradoFundo">

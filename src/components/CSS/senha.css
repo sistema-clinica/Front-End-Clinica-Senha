@@ -1,0 +1,28 @@
+.senhaUnicas {
+    padding: 21px 18px;
+    gap: 60px;    
+    display: flex;
+    background: #E1E5F2;
+}
+
+.Bloco {
+    display: flex;
+    flex-direction: column;
+}
+
+.Bloco h4 {
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0em;
+    line-height: 0px;
+    color: #00000070;
+}
+
+.Bloco p {
+    font-family: Inter;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 0px;
+    letter-spacing: 0em;
+}

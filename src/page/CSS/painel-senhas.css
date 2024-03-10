@@ -1,3 +1,11 @@
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 .painel-senhas {
   padding: 50px;
   background: #FAFBFF;
@@ -5,6 +13,7 @@
 
 .quadardo {
   display: flex;
+  justify-content: center;
   gap: 100px;
 }
 
