@@ -2,7 +2,7 @@
 
 .quadradoFundo {
     width: 862px;
-    height: 698.83px;
+    height: 698px;
     border-radius: 40px;
     gap: 46px;
     background: #FFFCFC;
@@ -74,4 +74,29 @@ h3 {
     letter-spacing: 0em;
     text-align: center;
 }
+
+@media (max-height: 900px) {
+    .quadradoFundo {
+        height: 558px;
+        width: 689px;
+    }
+
+    .informacoes {
+        height: auto;
+        width: auto;
+    }
+
+    .logo h2 {
+        font-size: 43px;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 42px;
+    }
+
+    .informacoes p {
+        font-size: 38px;
+    }
+  }
 

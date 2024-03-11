@@ -24,4 +24,15 @@
     text-align: center;
 }
 
+@media (max-height: 865px) {
+    .qualdardo {
+        height: 99px;
+        width: 689px;
+    }
+
+    .qualdardo p {
+        font-size: 56px;
+    }
+}
+
 

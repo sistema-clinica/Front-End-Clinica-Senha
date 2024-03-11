@@ -1,17 +1,15 @@
-import './CSS/senha.css'
+import './CSS/senha.css';
 
-function senha() {
-
-
+function senha({senha, localDeAtendimento, par}) {
     return (
-        <div className="senhaUnicas">
+        <div className={`senhaUnicas ${par ? 'par' : 'impar'}`}>
             <div className="Bloco">
                 <h4>Senha</h4>
-                <p>...</p>
+                <p>{senha}</p>
             </div>
             <div className="Bloco">
                 <h4>Local de Atendimento</h4>
-                <p>...</p>
+                <p>{localDeAtendimento}</p>
             </div>
         </div>
     );

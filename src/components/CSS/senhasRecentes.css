@@ -30,3 +30,19 @@
   overflow: hidden;
   overflow-y: auto;
 }
+
+@media (max-height: 900px) {
+  .quadradoRecentes {
+    width: 302px;
+    height: 739px;
+  }
+
+  .senhasAnteriores {
+    width: 251px;
+    height: 606px;
+  }
+
+  .quadradoRecentes h1 {
+    font-size: 24px;
+  }
+}
