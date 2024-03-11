@@ -2,7 +2,6 @@
     padding: 21px 18px;
     gap: 60px;    
     display: flex;
-    background: #E1E5F2;
 }
 
 .Bloco {
@@ -25,4 +24,12 @@
     font-weight: 700;
     line-height: 0px;
     letter-spacing: 0em;
+}
+
+.par{
+    background: #E1E5F2;
+}
+
+.impar {
+    background: #FFFCFC;
 }

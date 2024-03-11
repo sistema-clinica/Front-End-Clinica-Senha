@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import './CSS/senhaAtual.css';
 
-function SenhaAtual() {
+function SenhaAtual({ onPacienteChamado }) {
     const API_URL = "http://ec2-3-85-49-103.compute-1.amazonaws.com:8080"
 
     const [senha, setSenha] = useState('...');
@@ -24,6 +24,8 @@ function SenhaAtual() {
         .then((data) => {
             setSenha(data.senha);
             setLocalDeAtendimento(data.localDeAtendimento);
+            setLocalDeAtendimento(data.localDeAtendimento);
+            onPacienteChamado(data);
         })
         .catch((err) => console.log(err));
     };
