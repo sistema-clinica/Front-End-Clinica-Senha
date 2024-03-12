@@ -24,7 +24,6 @@ function SenhaAtual({ onPacienteChamado }) {
         .then((data) => {
             setSenha(data.senha);
             setLocalDeAtendimento(data.localDeAtendimento);
-            setLocalDeAtendimento(data.localDeAtendimento);
             onPacienteChamado(data);
         })
         .catch((err) => console.log(err));
