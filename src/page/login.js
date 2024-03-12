@@ -9,12 +9,7 @@ function Login() {
                 <MenuLogin/>
                 <div className='cabesalhoLogin'>
                     <div className='tituloLogin'>
-                        <div className='secao1'>
-                            <h1>Página de</h1>
-                        </div>
-                        <div className='secao2'>
-                            <h1>Login</h1>
-                        </div>
+                        <h1>Página de Login</h1>
                     </div>
                     <h2>Painel de gerenciamento de senhas para clínica médica</h2>
                 </div>

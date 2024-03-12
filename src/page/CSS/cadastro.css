@@ -1,4 +1,4 @@
-.login {
+.cadastro {
     background-image: url(../image/Fundo.jpg);
     background-size: cover;
     background-position: center;
@@ -11,58 +11,36 @@
     width: 100vw;
 }
 
-.subQuadradoLogin {
+.subQuadradoCadastro {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     gap: 90px;
 }
 
-.imagemBaixo img {
-    width: 100vw;
+.cabesalhoCadastro {
+    width: 680px;
+    height: 192px;
+    gap: 29.53px;
     display: flex;
-}
-
-.cabesalhoLogin {
-    display: flex;
-    flex-direction: column;
-}
-
-.tituloLogin {
-    width: 309px;
-    height: 227px;
+    align-items: center;
     color: #FFFFFF;
 }
 
-.tituloLogin h1::first-line {
+.cabesalhoCadastro h1 {
     font-family: Poppins;
-    font-size: 59px;
+    font-size: 90px;
     font-weight: 700;
-    line-height: 88px;
+    line-height: 108px;
     letter-spacing: 0em;
     text-align: left;
 }
 
-.tituloLogin h1 {
+.cabesalhoCadastro h1::first-line {
     font-family: Poppins;
-    font-size: 112px;
+    font-size: 55px;
     font-weight: 700;
-    line-height: 134.12px;
+    line-height: 83px;
     letter-spacing: 0em;
     text-align: left;
-}
-
-.cabesalhoLogin {
-    gap: 45px;
-}
-
-.cabesalhoLogin h2 {
-    width: 665.03px;
-    height: 136px;
-    font-family: Poppins;
-    font-size: 45px;
-    font-weight: 400;
-    line-height: 68px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: #FFFFFF;
 }

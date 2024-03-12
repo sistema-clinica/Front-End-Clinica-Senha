@@ -8,7 +8,7 @@ function MenuLogin() {
                 <img src={Logo} alt="Logo" />
                 <h3>Bem vindo</h3>
             </div>
-            <div className="input">
+            <div className="inputLogin">
                 <input
                     type='text'
                     placeholder='afadfal@gmail.com'

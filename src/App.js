@@ -1,4 +1,4 @@
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from './page/login';
 import Cadastro from './page/cadastro';
 import MenuPrincipal from './page/menu-principal';

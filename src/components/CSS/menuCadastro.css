@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-.quadradoLogin {
+.quadradoCadastro {
     width: 427.74px;
     height: 539.77px;
     border-radius: 20.37px;
@@ -12,23 +12,28 @@
     justify-content: space-around;
 }
 
-.logoLogin {
+.logoCadastro {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 20px 0px 0px 0px;
 }
 
-.logoLogin h3 {
+.logoCadastro h3 {
     font-family: "Poppins", sans-serif;
-    font-size: 41px;
+    font-size: 30px;
     font-weight: 700;
-    line-height: 0px;
+    line-height: 40px;
     letter-spacing: 0em;
     text-align: center;
 }
 
-.inputLogin {
+.logoCadastro h3::first-line {
+    line-height: 12px;
+}
+
+.inputCadstro {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,7 +41,7 @@
     gap: 10.18px;
 }
 
-.quadradoLogin input {
+.quadradoCadastro input {
     width: 336.08px;
     height: 56.01px;
     border-radius: 101.84px;
@@ -49,8 +54,8 @@
     text-align: center;
 }
 
-.botaoLogin button {
-    width: 136px;
+.botaoCadastro button {
+    width: 187px;
     height: 61px;
     border-radius: 101.84px;
     gap: 10px;
