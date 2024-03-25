@@ -1,6 +1,15 @@
+import BaraDeMenu from '../components/baraDeMenu';
+import './CSS/menu-principal.css'
+
 function MenuPricipal() {
     return(
-        <h1>Menu</h1>
+        <div className='menuTotal'>
+            <BaraDeMenu/>
+            <div className='menuConteudo'>
+                
+            </div>
+        </div>
+
     );
 }
 
