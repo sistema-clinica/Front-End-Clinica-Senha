@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import Login from './page/login';
-import Cadastro from './page/cadastro';
-import MenuPrincipal from './page/menu-principal';
-import PainelSenhas from './page/painel-senhas';
+import Login from './page/login/login';
+import Cadastro from './page/cadastro/cadastro';
+import MenuPrincipal from './page/menu-principal/menu-principal';
+import PainelSenhas from './page/painel-senha/painel-senhas';
 
 function App() {
   return (

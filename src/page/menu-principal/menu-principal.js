@@ -1,10 +1,10 @@
-import BaraDeMenu from '../components/baraDeMenu';
-import './CSS/menu-principal.css'
+import BarraDeMenu from '../../components/barraDeMenu/barraDeMenu';
+import './menu-principal.css'
 
 function MenuPricipal() {
     return(
         <div className='menuTotal'>
-            <BaraDeMenu/>
+            <BarraDeMenu/>
             <div className='menuConteudo'>
                 
             </div>

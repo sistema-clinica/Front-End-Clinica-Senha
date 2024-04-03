@@ -1,14 +1,14 @@
-import './CSS/menuLogin.css';
-import Logo from './img/Vector.png'
+import Logo from './img/Vector.png';
+import styles from './menuLogin.module.css';
 
 function MenuLogin() {
     return (
-        <div className="quadradoLogin">
-            <div className='logoLogin'>
+        <div className={styles.quadradoLogin}>
+            <div className={styles.logoLogin}>
                 <img src={Logo} alt="Logo" />
                 <h3>Bem vindo</h3>
             </div>
-            <div className="inputLogin">
+            <div className={styles.inputLogin}>
                 <input
                     type='text'
                     placeholder='afadfal@gmail.com'
@@ -18,7 +18,7 @@ function MenuLogin() {
                     placeholder='senha'
                 ></input>
             </div>
-            <div className='botaoLogin'>
+            <div className={styles.botaoLogin}>
                 <button>
                     Login
                 </button>

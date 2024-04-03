@@ -1,16 +1,12 @@
-import Senha from './senha';
+import Senha from '../senha/senha';
 import { useEffect, useState } from 'react';
-
-import './CSS/senhasRecentes.css';
+import styles from './senhasRecentes.module.css'; // Importando o arquivo de módulo CSS
 
 function SenhasRecentes() {
-
     const API_URL = "http://ec2-3-85-49-103.compute-1.amazonaws.com:8080"
-
     const [senhasRecentes, setSenhasRecentes] = useState([]);
 
     useEffect(() => {
-
         fetch(API_URL + '/atendimento/recentes', {
             method: 'GET',
             headers: {
@@ -30,9 +26,9 @@ function SenhasRecentes() {
     };
 
     return (
-        <aside className="quadradoRecentes">
+        <aside className={styles.quadradoRecentes}>
             <h1>Senhas Anteriores</h1>
-            <div className='senhasAnteriores'>
+            <div className={styles.senhasAnteriores}>
                 {senhasRecentes.length > 0 && 
                 senhasRecentes.map((item, index) => <Senha
                 key = {index}
@@ -41,7 +37,6 @@ function SenhasRecentes() {
                 par={index % 2 === 0}
                 />)}
             </div>
-          
         </aside>
     );
 }

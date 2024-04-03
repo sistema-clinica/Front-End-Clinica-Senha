@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import './CSS/relogio.css'
+import React, { useEffect, useState } from 'react';
+import styles from './relogio.module.css';
 import moment from "moment";
 
 function Relogio() {
@@ -15,9 +15,9 @@ function Relogio() {
       setDate(moment().format("YYYY-MM-DD HH:mm:ss"));
     }
 
-    return(
-        <div className="qualdardo">
-          <p>{date}</p>
+    return (
+        <div className={styles.qualdardo}>
+            <p>{date}</p>
         </div>
     );
 }
