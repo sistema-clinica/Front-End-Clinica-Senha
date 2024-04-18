@@ -27,6 +27,11 @@
     color: #FFFFFF;
 }
 
+.imagemBaixo img {
+    width: 100vw;
+    display: flex;
+}
+
 .cabesalhoCadastro h1 {
     font-family: Poppins;
     font-size: 90px;

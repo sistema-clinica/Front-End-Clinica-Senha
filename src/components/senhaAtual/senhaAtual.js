@@ -1,9 +1,8 @@
 import React, { useState} from 'react';
 import styles from './senhaAtual.module.css';
+import { url } from '../../services/fumcoes';
 
 function SenhaAtual({ onPacienteChamado }) {
-    const API_URL = "http://ec2-3-85-49-103.compute-1.amazonaws.com:8080"
-
     const [senha, setSenha] = useState('...');
     const [localDeAtendimento, setLocalDeAtendimento] = useState('...');
     const [localParaTeste, setLocalParaTeste] = useState('');
@@ -13,7 +12,7 @@ function SenhaAtual({ onPacienteChamado }) {
             localDeAtendimento: localParaTeste || localDeAtendimento,
         };
 
-        fetch(API_URL + '/atendimento/espera', {
+        fetch(url + '/atendimento/espera', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
