@@ -1,13 +1,13 @@
 import Senha from '../senha/senha';
 import { useEffect, useState } from 'react';
-import styles from './senhasRecentes.module.css'; // Importando o arquivo de módulo CSS
+import styles from './senhasRecentes.module.css';
+import { url } from '../../services/fumcoes';
 
 function SenhasRecentes() {
-    const API_URL = "http://ec2-3-85-49-103.compute-1.amazonaws.com:8080"
     const [senhasRecentes, setSenhasRecentes] = useState([]);
 
     useEffect(() => {
-        fetch(API_URL + '/atendimento/recentes', {
+        fetch(url + '/atendimento/recentes', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
