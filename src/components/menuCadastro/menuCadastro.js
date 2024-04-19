@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Logo from '../../assets/images/Vector2.png';
 import styles from './menuCadastro.module.css';
 import {useQuery} from "@tanstack/react-query";
-import {fazerLogin} from "../../services/apiServices";
+import {cadastrarNovoAdmin} from "../../services/apiServices";
 
 const MenuCadastro = () => {
     const [username, setUsername] = useState('');
@@ -20,8 +20,8 @@ const MenuCadastro = () => {
         };
 
         const {data: token, isLoading, error} = useQuery({
-            queryKey: "AdminLogin",
-            queryFn: () => fazerLogin(dadosUsuario)
+            queryKey: "AdminCadastro",
+            queryFn: () => cadastrarNovoAdmin(dadosUsuario)
         })
 
         console.log(token)

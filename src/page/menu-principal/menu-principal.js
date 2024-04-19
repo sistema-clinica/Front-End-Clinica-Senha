@@ -24,3 +24,5 @@ function MenuPricipal() {
     );
 }
 
+export default MenuPricipal;
+

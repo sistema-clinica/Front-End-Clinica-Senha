@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import style from './cadastroPaciente.module.css';
 import Exit from './img/Icon.svg';
-import { url } from '../../services/fumcoes';
+import {useQuery} from "@tanstack/react-query";
 import CadastroComcluido from '../cadastroComluido/cadastroComcluido';
+import { cadastrarNovoPaciente } from '../../services/apiServices';
 
 function CadastroPaciente({ isOpen, onClose }) {
     const [nome, setNome] = useState('');
     const [data, setData] = useState('');
     const [cpf, setCpf] = useState('');
-    const [senha, setSenha] = useState('');
+    const [senha, setSenha] = useState('')
     const [modalOpen, setModalOpen] = useState(false);
 
     const toggleModal = () => {
@@ -55,27 +56,22 @@ function CadastroPaciente({ isOpen, onClose }) {
     
     
 
-    const enviarCliente = () => {
-        const requestBody = {
+    const HandleCadastroPaciente = async () => {
+        const dadosUsuario = {
             nome: nome,
             dataNasc: formatarDataParaEnvio(data),
             cpf: formatarCPFParaEnvio(cpf)
         };
 
-        fetch(url + '/pacientes/cadastro', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(requestBody),
-        })
-        .then((resp) => resp.json())
-        .then((data) => {
-            setSenha(data.senha);
-            toggleModal(); // Fechar o modal após o envio do cliente
-        })
-        .catch((err) => console.log(err));
-    }
+        try {
+            const response = await cadastrarNovoPaciente(dadosUsuario);
+            setSenha(response.senha); // Definir a senha recebida no estado
+            onClose();
+            toggleModal();
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     const handleDataChange = (e) => {
         // Aceitar apenas números e limitar o tamanho para 10 caracteres (dd/mm/aaaa)
@@ -124,7 +120,7 @@ function CadastroPaciente({ isOpen, onClose }) {
                             <div className={style.baixo}>
                                 <div className={style.conteiner3}>
                                     <button className={style.cancelar} onClick={onClose}>Cancelar</button>
-                                    <button className={style.comfirmar} onClick={enviarCliente}>Confirmar</button>
+                                    <button className={style.comfirmar} onClick={HandleCadastroPaciente}>Confirmar</button>
                                 </div>
                             </div>
                         </div>
