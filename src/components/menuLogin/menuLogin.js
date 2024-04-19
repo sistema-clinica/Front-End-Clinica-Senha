@@ -1,38 +1,29 @@
-import Logo from './img/Vector.png';
+import Logo from '../../assets/images/Vector.png';
 import styles from './menuLogin.module.css';
-import { url } from '../../services/fumcoes';
-import { useState } from 'react';
+import {useState} from 'react';
+import {useQuery} from "@tanstack/react-query";
+import {fazerLogin} from "../../services/apiServices";
 
 function MenuLogin() {
     const [username, setUsername] = useState('');
     const [senha, setSenha] = useState('');
 
-    const handleLogin = () => {
+    const HandleLogin = () => {
         const dadosUsuario = {
             username: username,
             senha: senha
         };
 
-        fetch(url + '/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(dadosUsuario)
+        const {data: token, isLoading, error} = useQuery({
+            queryKey: "AdminLogin",
+            queryFn: () => fazerLogin(dadosUsuario)
         })
-        .then(resp => {
-            if (!resp.ok) {
-                throw new Error('Erro ao fazer login');
-            }
-            return resp.json();
-        })
-        .then(data => {
-            console.log('Token JWT:', data.token);
-        })
-        .catch(err => {
-            alert('Erro ao fazer o login')
-            console.error(err);
-        });
+
+        console.log(token)
+
+        if (error) {
+            console.log(error)
+        }
     };
 
     return (
@@ -56,7 +47,7 @@ function MenuLogin() {
                 ></input>
             </div>
             <div className={styles.botaoLogin}>
-                <button onClick={handleLogin}>
+                <button onClick={HandleLogin}>
                     Login
                 </button>
             </div>

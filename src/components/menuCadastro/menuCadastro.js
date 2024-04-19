@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import Logo from './img/Vector.png';
+import React, {useState} from 'react';
+import Logo from '../../assets/images/Vector2.png';
 import styles from './menuCadastro.module.css';
-import { url } from '../../services/fumcoes';
+import {useQuery} from "@tanstack/react-query";
+import {fazerLogin} from "../../services/apiServices";
 
 const MenuCadastro = () => {
     const [username, setUsername] = useState('');
     const [senha, setSenha] = useState('');
     const [confirmarSenha, setConfirmarSenha] = useState('');
 
-    const handleCadastro = () => {
+    const HandleCadastro = () => {
         if (senha !== confirmarSenha) {
             alert('As senhas não coincidem');
-            return;
         }
 
         const dadosUsuario = {
@@ -19,23 +19,16 @@ const MenuCadastro = () => {
             senha: senha
         };
 
-        fetch(url + '/cadastro', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(dadosUsuario)
+        const {data: token, isLoading, error} = useQuery({
+            queryKey: "AdminLogin",
+            queryFn: () => fazerLogin(dadosUsuario)
         })
-        .then(resp => {
-            if (!resp.ok) {
-                throw new Error('Erro ao fazer cadastro');
-            }
-            return resp.json();
-        })
-        .then(data => {
-            console.log('Token JWT:', data.token);
-        })
-        .catch(err => console.error(err));
+
+        console.log(token)
+
+        if (error) {
+            console.log(error)
+        }
     };
 
     return (
@@ -65,7 +58,7 @@ const MenuCadastro = () => {
                 ></input>
             </div>
             <div className={styles.botaoCadastro}>
-                <button onClick={handleCadastro}>
+                <button onClick={HandleCadastro}>
                     Cadastrar
                 </button>
             </div>
