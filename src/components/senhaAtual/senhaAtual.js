@@ -1,11 +1,13 @@
 import React, { useState} from 'react';
 import styles from './senhaAtual.module.css';
 import { url } from '../../services/fumcoes';
+import Efeito from './audio/efeito.mp3'
 
 function SenhaAtual({ onPacienteChamado }) {
     const [senha, setSenha] = useState('...');
     const [localDeAtendimento, setLocalDeAtendimento] = useState('...');
     const [localParaTeste, setLocalParaTeste] = useState('');
+    const audio = new Audio(Efeito);
 
     const buscarUltimoAtendimento = () => {
         const requestBody = {
@@ -26,6 +28,8 @@ function SenhaAtual({ onPacienteChamado }) {
             onPacienteChamado(data);
         })
         .catch((err) => console.log(err));
+
+        audio.play();
     };
 
     return (
