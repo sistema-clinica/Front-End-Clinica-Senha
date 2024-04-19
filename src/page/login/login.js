@@ -1,6 +1,6 @@
 import MenuLogin from '../../components/menuLogin/menuLogin';
 import styles from './login.module.css';
-import Onda from './image/Ondulação_Footer.png';
+import Onda from '../../assets/images/Ondulação_Footer.png';
 
 function Login() {
     return (

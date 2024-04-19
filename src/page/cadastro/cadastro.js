@@ -1,5 +1,5 @@
 import MenuCadastro from '../../components/menuCadastro/menuCadastro';
-import Onda from './image/Ondulação_Footer.png';
+import Onda from '../../assets/images/Ondulação_Footer.png';
 import styles from './cadastro.module.css';
 
 function Cadastro() {
