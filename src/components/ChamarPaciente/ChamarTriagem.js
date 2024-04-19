@@ -4,7 +4,7 @@ export function ChamarTriagem() {
 
     return (
         <ChamarPaciente
-            destination={"senha/espera"}
+            destination={"/senha/espera"}
             tipo={"triagem"}
         />
     );
