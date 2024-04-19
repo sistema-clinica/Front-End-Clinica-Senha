@@ -1,6 +1,6 @@
 import React from 'react';
-import Logo from './img/Vector.png';
-import Saida from './img/IconSair.png';
+import Logo from '../../assets/images/Vector3.png';
+import Saida from '../../assets/images/IconSair.png';
 import styles from './barraDeMenu.module.css';
 
 function BarraDeMenu() {

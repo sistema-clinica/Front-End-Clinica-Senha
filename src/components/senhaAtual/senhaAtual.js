@@ -1,32 +1,31 @@
-import React, { useState} from 'react';
+import React, {useState} from 'react';
 import styles from './senhaAtual.module.css';
-import { url } from '../../services/fumcoes';
+import efeito_sonoro from "../../assets/audio/attention_beep.mov"
+import {stompClient} from "../../services/webSocketService";
+import {ChamarAtendimento} from "../ChamarPaciente/ChamarAtendimento";
+import {ChamarTriagem} from "../ChamarPaciente/ChamarTriagem";
 
-function SenhaAtual({ onPacienteChamado }) {
-    const [senha, setSenha] = useState('...');
-    const [localDeAtendimento, setLocalDeAtendimento] = useState('...');
-    const [localParaTeste, setLocalParaTeste] = useState('');
+function SenhaAtual({ refreshSenhasAnteriores }) {
+    const [senha, setSenha] = useState('');
+    const [localDeAtendimento, setLocalDeAtendimento] = useState('');
+    const audio = new Audio(efeito_sonoro);
 
-    const buscarUltimoAtendimento = () => {
-        const requestBody = {
-            localDeAtendimento: localParaTeste || localDeAtendimento,
-        };
+    const onError = (err) => {
+        console.log(err);
+    }
 
-        fetch(url + '/atendimento/espera', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(requestBody),
-        })
-        .then((resp) => resp.json())
-        .then((data) => {
-            setSenha(data.senha);
-            setLocalDeAtendimento(data.localDeAtendimento);
-            onPacienteChamado(data);
-        })
-        .catch((err) => console.log(err));
-    };
+    stompClient.connect({}, (frame) => {
+        stompClient.subscribe('/painel', (pacienteData) => {
+            chamarPaciente(JSON.parse(pacienteData.body).body);
+        });
+    }, onError)
+
+    const chamarPaciente = (pacienteData) => {
+        audio.play().then(r => efeito_sonoro)
+        setSenha(pacienteData.senha)
+        setLocalDeAtendimento(pacienteData.localDeAtendimento)
+        refreshSenhasAnteriores()
+    }
 
     return (
         <section className={styles.quadradoFundo}>
@@ -42,16 +41,10 @@ function SenhaAtual({ onPacienteChamado }) {
                     <h3>Local de Atendimento</h3>
                     <p>{localDeAtendimento}</p>
                 </div>
+                <ChamarAtendimento/>
+                <ChamarTriagem/>
             </div>
-            <div>
-                <input 
-                    type="text" 
-                    value={localParaTeste} 
-                    onChange={(e) => setLocalParaTeste(e.target.value)} 
-                    placeholder="Digite o local de atendimento para teste"
-                />
-                <button onClick={buscarUltimoAtendimento}>Buscar Último Atendimento</button>
-            </div>
+
         </section>
     );
 }
