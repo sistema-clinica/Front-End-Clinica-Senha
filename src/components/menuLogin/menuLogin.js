@@ -1,28 +1,34 @@
 import Logo from '../../assets/images/Vector.png';
 import styles from './menuLogin.module.css';
 import {useState} from 'react';
-import {useQuery} from "@tanstack/react-query";
 import {fazerLogin} from "../../services/apiServices";
+import { useNavigate } from 'react-router-dom';
 
 function MenuLogin() {
     const [username, setUsername] = useState('');
     const [senha, setSenha] = useState('');
+    const [token, setToken] = useState('')
+    const navegete = useNavigate();
 
-    const HandleLogin = () => {
+    const handleNavigate = (route) => {
+        navegete(route);
+    };
+
+
+    const HandleLogin = async () => {
         const dadosUsuario = {
             username: username,
             senha: senha
         };
 
-        const {data: token, isLoading, error} = useQuery({
-            queryKey: "AdminLogin",
-            queryFn: () => fazerLogin(dadosUsuario)
-        })
-
-        console.log(token)
-
-        if (error) {
-            console.log(error)
+        try {
+            const response = await fazerLogin(dadosUsuario);
+            setToken(response.token);
+            console.log(token);
+            handleNavigate('/');
+        } catch (error) {
+            console.log(error);
+            alert('SENHA ou USUARIO incoretos')
         }
     };
 

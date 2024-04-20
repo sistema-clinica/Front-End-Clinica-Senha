@@ -1,15 +1,21 @@
 import React, {useState} from 'react';
 import Logo from '../../assets/images/Vector2.png';
 import styles from './menuCadastro.module.css';
-import {useQuery} from "@tanstack/react-query";
-import {fazerLogin} from "../../services/apiServices";
+import {cadastrarNovoAdmin} from "../../services/apiServices";
+import { useNavigate } from 'react-router-dom';
 
 const MenuCadastro = () => {
     const [username, setUsername] = useState('');
     const [senha, setSenha] = useState('');
     const [confirmarSenha, setConfirmarSenha] = useState('');
+    const [token, setToken] = useState('')
+    const navegete = useNavigate();
 
-    const HandleCadastro = () => {
+    const handleNavigate = (route) => {
+        navegete(route);
+    };
+
+    const HandleCadastro = async () => {
         if (senha !== confirmarSenha) {
             alert('As senhas não coincidem');
         }
@@ -19,15 +25,13 @@ const MenuCadastro = () => {
             senha: senha
         };
 
-        const {data: token, isLoading, error} = useQuery({
-            queryKey: "AdminLogin",
-            queryFn: () => fazerLogin(dadosUsuario)
-        })
-
-        console.log(token)
-
-        if (error) {
-            console.log(error)
+        try {
+            const response = await cadastrarNovoAdmin(dadosUsuario);
+            setToken(response.token);
+            console.log(token);
+            handleNavigate('/');
+        } catch (error) {
+            console.log(error);
         }
     };
 

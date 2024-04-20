@@ -25,3 +25,9 @@ export const getSenhasAnteriores = async () => {
     return response.data
 }
 
+export const cadastrarNovoPaciente = async (pacienteData) => {
+    const response = await axiosInstance.post("/pacientes/cadastro", pacienteData)
+    return response.data
+}
+
+
