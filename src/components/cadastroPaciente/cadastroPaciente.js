@@ -13,6 +13,10 @@ function CadastroPaciente({ isOpen, onClose }) {
     const [cpf, setCpf] = useState('');
     const [senha, setSenha] = useState('');
     const [modalOpen, setModalOpen] = useState(false);
+    const [erroCPF, setErroCPF] = useState(false);
+    const [erroData, setErroData] = useState(false);
+    const [erroNome, setErroNome] = useState(false);
+
 
     const toggleModal = () => {
         setModalOpen(!modalOpen);
@@ -31,7 +35,41 @@ function CadastroPaciente({ isOpen, onClose }) {
         return `${partes[2]}-${partes[1]}-${partes[0]}`;
     };
 
+    const validarNome = () => {
+        if (nome.trim() === '') {
+            setErroNome(true);
+            return false;
+        }
+        setErroNome(false);
+        return true;
+    };
+
+    const validarCPF = () => {
+        if (cpf.length !== 14) {
+            setErroCPF(true);
+            return false;
+        }
+        setErroCPF(false);
+        return true;
+    };
+
+    const validarData = () => {
+        const regexData = /^\d{2}\/\d{2}\/\d{4}$/;
+        if (!regexData.test(data)) {
+            setErroData(true);
+            return false;
+        }
+        setErroData(false);
+        return true;
+    };
+
     const HandleCadastroPaciente = async () => {
+        if (!validarCPF() || !validarData() || !validarNome()) {
+            alert('É obrigatorio preencher o NOME, CPF e a DATA')
+            return;
+        }
+
+
         const dadosUsuario = {
             nome: nome,
             dataNasc: formatarDataParaEnvio(data),
