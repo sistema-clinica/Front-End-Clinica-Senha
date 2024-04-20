@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import style from './fila.module.css';
 import SenhaFila from '../senhaFila/senhaFila';
 
-function Fila({ titulo, fucao }) {
+function Fila({ titulo, funcao }) {
     const [filaAtendimentos, setFilaAtendimentos] = useState([]);
 
     useEffect(() => {
         const fetchFilaAtendimentos = async () => {
             try {
-                const response = await fucao();
+                const response = await funcao();
                 setFilaAtendimentos(response);
             } catch (error) {
                 console.error('Erro ao obter a fila de atendimentos:', error);
@@ -30,15 +30,19 @@ function Fila({ titulo, fucao }) {
         <div className={style.conteiner}>
             <div className={style.titulo}>
                 <h4>{titulo}</h4>
-                <p>Quantidade: {filaAtendimentos ? filaAtendimentos.length : 0}</p>
+                <span>Quantidade: {filaAtendimentos ? filaAtendimentos.length : 0}</span>
             </div>
             <div className={style.corpo}>
                 <tr className={style.legenda}>
-                    <td className={style.legenda2}>
-                        <p>Posição</p>
-                        <p>Nome</p>
-                    </td>
-                    <td>Senha</td>
+                    <th>
+                        Posição
+                    </th>
+                    <th>
+                        Nome
+                    </th>
+                    <th>
+                        Senha
+                    </th>
                 </tr>
                 {filaAtendimentos && filaAtendimentos.map((atendimento, index) => (
                     <SenhaFila

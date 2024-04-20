@@ -3,11 +3,15 @@ import style from './senhaFila.module.css'
 function SenhaFila({ posicao, nome, senha }) {
     return(
         <tr className={style.conteiner}>
-            <td className={style.subConteiner}>
-                <h5>{posicao}.</h5>
-                <h5>{nome}</h5>
+            <td>
+                {posicao}.
             </td>
-            <td>{senha}</td>
+            <td>
+                {nome}
+            </td>
+            <td>
+                {senha}
+            </td>
         </tr>
     );
 }

@@ -1,0 +1,66 @@
+.menuTotal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menuConteudo {
+    width: 90%;
+    height: 70vh;
+    padding: 5% 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.fila {
+    gap: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.secaoBotao {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.secaoImfo {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.imagem {
+    background-image: url(../../assets/images/detalheDoMenu.png);
+    background-size: cover;
+    background-position: top;
+    background-attachment: local;
+    width: 900px;
+    height: 200px;
+    padding: 16.58px;
+    gap: 24.04px;
+    border-radius: 33.16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.imagem h2 {
+    width: 90%;
+    font-family: Inter;
+    font-size: 40.98px;
+    font-weight: 700;
+    line-height: 73.37px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.24);
+    color: rgba(255, 255, 255, 1); 
+}
