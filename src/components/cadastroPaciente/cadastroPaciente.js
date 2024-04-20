@@ -1,44 +1,21 @@
 import React, { useState } from 'react';
 import style from './cadastroPaciente.module.css';
 import Exit from './img/Icon.svg';
-import {useQuery} from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import CadastroComcluido from '../cadastroComluido/cadastroComcluido';
 import { cadastrarNovoPaciente } from '../../services/apiServices';
+import CPFInput from '../CPFInput/CPFInput';
+import DateInput from '../DateInput/DateInput';
 
 function CadastroPaciente({ isOpen, onClose }) {
     const [nome, setNome] = useState('');
     const [data, setData] = useState('');
     const [cpf, setCpf] = useState('');
-    const [senha, setSenha] = useState('')
+    const [senha, setSenha] = useState('');
     const [modalOpen, setModalOpen] = useState(false);
 
     const toggleModal = () => {
         setModalOpen(!modalOpen);
-    };
-
-    const formatarData = (input) => {
-        // Formatar a data com barras
-        if (input.length > 2 && input[2] !== '/') {
-            input = input.slice(0, 2) + '/' + input.slice(2);
-        }
-        if (input.length > 5 && input[5] !== '/') {
-            input = input.slice(0, 5) + '/' + input.slice(5);
-        }
-        return input.slice(0, 10); // Limitar para 10 caracteres (dd/mm/aaaa)
-    };
-
-    const formatarCPF = (input) => {
-        // Formatar o CPF com pontos e traço
-        if (input.length > 3 && input[3] !== '.') {
-            input = input.slice(0, 3) + '.' + input.slice(3);
-        }
-        if (input.length > 7 && input[7] !== '.') {
-            input = input.slice(0, 7) + '.' + input.slice(7);
-        }
-        if (input.length > 11 && input[11] !== '-') {
-            input = input.slice(0, 11) + '-' + input.slice(11);
-        }
-        return input.slice(0, 14); // Limitar para 14 caracteres (xxx.xxx.xxx-xx)
     };
 
     const formatarCPFParaEnvio = (input) => {
@@ -53,8 +30,6 @@ function CadastroPaciente({ isOpen, onClose }) {
         // Reorganizar as partes na ordem "aaaa-mm-dd"
         return `${partes[2]}-${partes[1]}-${partes[0]}`;
     };
-    
-    
 
     const HandleCadastroPaciente = async () => {
         const dadosUsuario = {
@@ -65,24 +40,12 @@ function CadastroPaciente({ isOpen, onClose }) {
 
         try {
             const response = await cadastrarNovoPaciente(dadosUsuario);
-            setSenha(response.senha); // Definir a senha recebida no estado
+            setSenha(response.senha);
             onClose();
             toggleModal();
         } catch (error) {
             console.log(error);
         }
-    };
-
-    const handleDataChange = (e) => {
-        // Aceitar apenas números e limitar o tamanho para 10 caracteres (dd/mm/aaaa)
-        const input = e.target.value.replace(/\D/g, '').slice(0, 8);
-        setData(formatarData(input));
-    };
-
-    const handleCPFChange = (e) => {
-        // Aceitar apenas números e limitar o tamanho para 14 caracteres (xxx.xxx.xxx-xx)
-        const input = e.target.value.replace(/\D/g, '').slice(0, 11);
-        setCpf(formatarCPF(input));
     };
 
     return (
@@ -104,16 +67,14 @@ function CadastroPaciente({ isOpen, onClose }) {
                                         onChange={(e) => setNome(e.target.value)}
                                     />
                                     <p>Data de Nascimento</p>
-                                    <input 
-                                        placeholder='dd/mm/aaaa'
+                                    <DateInput
                                         value={data}
-                                        onChange={handleDataChange}
+                                        onChange={(value) => setData(value)}
                                     />
                                     <p>CPF</p>
-                                    <input 
-                                        placeholder='000.000.000-00'
+                                    <CPFInput
                                         value={cpf}
-                                        onChange={handleCPFChange}
+                                        onChange={(value) => setCpf(value)}
                                     />
                                 </div>
                             </div>
