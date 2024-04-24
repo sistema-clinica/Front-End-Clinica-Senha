@@ -35,4 +35,14 @@ export const getAtendimentoFila = async () => {
     return response.data
 }
 
+export const getTriagemFila = async () => {
+    const response = await axiosInstance.get("/atendimento/fila/espera")
+    return response.data
+}
+
+export const getNaTriagem= async () => {
+    const response = await axiosInstance.get("/atendimento/triagem")
+    return response.data
+}
+
 

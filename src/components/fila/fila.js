@@ -1,27 +1,30 @@
 import { useEffect, useState } from 'react';
 import style from './fila.module.css';
 import SenhaFila from '../senhaFila/senhaFila';
-import { getAtendimentoFila } from '../../services/apiServices';
 
-function Fila({ titulo }) {
+function Fila({ titulo, fucao }) {
     const [filaAtendimentos, setFilaAtendimentos] = useState([]);
 
     useEffect(() => {
         const fetchFilaAtendimentos = async () => {
             try {
-                const response = await getAtendimentoFila();
-                setFilaAtendimentos(response.data);
+                const response = await fucao();
+                setFilaAtendimentos(response);
             } catch (error) {
                 console.error('Erro ao obter a fila de atendimentos:', error);
             }
         };
 
         fetchFilaAtendimentos();
+
+        const interval = setInterval(() => {
+            fetchFilaAtendimentos();
+        }, 5000);
+
+        return () => clearInterval(interval);
     }, []);
 
-    useEffect(() => {
-        console.log(filaAtendimentos);
-    }, [filaAtendimentos]);
+    
 
     return (
         <div className={style.conteiner}>
@@ -30,13 +33,13 @@ function Fila({ titulo }) {
                 <p>Quantidade: {filaAtendimentos ? filaAtendimentos.length : 0}</p>
             </div>
             <div className={style.corpo}>
-                <div className={style.legenda}>
-                    <div className={style.legenda2}>
+                <tr className={style.legenda}>
+                    <td className={style.legenda2}>
                         <p>Posição</p>
                         <p>Nome</p>
-                    </div>
-                    <p>Senha</p>
-                </div>
+                    </td>
+                    <td>Senha</td>
+                </tr>
                 {filaAtendimentos && filaAtendimentos.map((atendimento, index) => (
                     <SenhaFila
                         key={atendimento.id}
