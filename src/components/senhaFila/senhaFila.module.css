@@ -1,0 +1,28 @@
+.conteiner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-top: 0.5px solid rgba(0, 0, 0, 0.3)
+}
+
+.subConteiner {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.subConteiner h5 {
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 0px;
+    text-align: left;
+}
+
+.conteiner p {
+    font-family: Helvetica;
+    font-size: 16.2px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: left;
+}

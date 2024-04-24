@@ -4,6 +4,7 @@ import './menu-principal.css'
 import Botao from '../../components/botao/botao';
 import Novo from './img/novo.png'
 import CadastroPaciente from '../../components/cadastroPaciente/cadastroPaciente';
+import Fila from '../../components/fila/fila';
 
 function MenuPricipal() {
     const [modalOpen, setModalOpen] = useState(false);
@@ -12,12 +13,16 @@ function MenuPricipal() {
         setModalOpen(!modalOpen);
     };
 
+
+
+
     return(
         <div className='menuTotal'>
             <BarraDeMenu/>
             <div className='menuConteudo'>
                 <Botao text='Novo Paciente' imagem={Novo} onClick={toggleModal}/>
                 <CadastroPaciente isOpen={modalOpen}  onClose={toggleModal}/>
+                <Fila titulo={'Fila de Atendimento'}/>
             </div>
         </div>
 

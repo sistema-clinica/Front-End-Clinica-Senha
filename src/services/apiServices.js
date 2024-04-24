@@ -30,4 +30,9 @@ export const cadastrarNovoPaciente = async (pacienteData) => {
     return response.data
 }
 
+export const getAtendimentoFila = async () => {
+    const response = await axiosInstance.get("/atendimento/fila")
+    return response.data
+}
+
 
