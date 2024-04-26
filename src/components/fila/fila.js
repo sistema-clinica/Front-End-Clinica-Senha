@@ -14,35 +14,26 @@ function Fila({ titulo, funcao }) {
                 console.error('Erro ao obter a fila de atendimentos:', error);
             }
         };
-
         fetchFilaAtendimentos();
-
         const interval = setInterval(() => {
             fetchFilaAtendimentos();
         }, 5000);
-
         return () => clearInterval(interval);
     }, []);
-
     
-
     return (
         <div className={style.conteiner}>
             <div className={style.titulo}>
                 <h4>{titulo}</h4>
-                <span>Quantidade: {filaAtendimentos ? filaAtendimentos.length : 0}</span>
+                <p>Quantidade: {filaAtendimentos ? filaAtendimentos.length : 0}</p>
             </div>
             <div className={style.corpo}>
                 <tr className={style.legenda}>
-                    <th>
-                        Posição
-                    </th>
-                    <th>
-                        Nome
-                    </th>
-                    <th>
-                        Senha
-                    </th>
+                    <td className={style.legenda2}>
+                        <p>Posição</p>
+                        <p>Nome</p>
+                    </td>
+                    <td>Senha</td>
                 </tr>
                 {filaAtendimentos && filaAtendimentos.map((atendimento, index) => (
                     <SenhaFila
@@ -56,5 +47,4 @@ function Fila({ titulo, funcao }) {
         </div>
     );
 }
-
 export default Fila;

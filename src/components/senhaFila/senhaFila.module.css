@@ -9,9 +9,12 @@
     width: 50%;
     display: flex;
     justify-content: space-around;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .subConteiner h5 {
+    width: 59px;
     font-family: Helvetica;
     font-size: 16px;
     font-weight: 700;
