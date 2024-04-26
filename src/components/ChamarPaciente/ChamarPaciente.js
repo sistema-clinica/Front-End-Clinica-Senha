@@ -1,13 +1,21 @@
 import {useState} from "react";
 import {stompClient} from "../../services/webSocketService";
 
-export function ChamarPaciente( {destination, tipo} ) {
+export function ChamarPaciente( {destination, tipo, funcao} ) {
     const [localDeAtendimento, setLocalDeAtendimento] = useState("")
 
-    const chamarPacienteAtendimento = () => {
-        const body = JSON.stringify({ 'localDeAtendimento': localDeAtendimento });
-        stompClient.send(destination, {}, body);
-    }
+    const HandleChamarPaciente = async () => {
+        const dadosUsuario = {
+            localDeAtendimento: localDeAtendimento,
+        };
+
+        try {
+            const response = await funcao(dadosUsuario);
+            stompClient.send('/painel', {}, JSON.stringify(response));
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <div>
@@ -17,7 +25,7 @@ export function ChamarPaciente( {destination, tipo} ) {
                 onChange={(e) => setLocalDeAtendimento(e.target.value)}
                 placeholder={`Digite o local de ${tipo}`}
             />
-            <button onClick={chamarPacienteAtendimento}>Chamar Paciente para {tipo}</button>
+            <button onClick={HandleChamarPaciente}>Chamar Paciente para {tipo}</button>
         </div>
     )
 }

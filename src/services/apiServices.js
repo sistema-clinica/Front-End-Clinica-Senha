@@ -45,4 +45,7 @@ export const getNaTriagem= async () => {
     return response.data
 }
 
-
+export const getUtimoPaciente= async () => {
+    const response = await axiosInstance.get("/atendimento/ultimo")
+    return response.data
+}
