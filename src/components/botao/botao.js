@@ -1,10 +1,10 @@
 import style from './botao.module.css'
 
-function Botao({text, imagem, onClick}) {
+function Botao({text, icon, onClick, backgroundColor}) {
     return(
-        <button className={style.conteiner} onClick={onClick}>
-            <p>{text}</p>
-            <img src={imagem} />
+        <button style={{backgroundColor: backgroundColor}} className={style.conteiner} onClick={onClick}>
+            {text}
+            {icon}
         </button>
     );
 }

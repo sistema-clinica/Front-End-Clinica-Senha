@@ -1,0 +1,80 @@
+.conteiner {
+    width: 297px;
+    height: 314px;
+    padding: 20px;
+    gap: 30px;
+    border-radius: 40px;
+    opacity: 0px;
+    background: rgba(255, 252, 252, 1);
+    box-shadow: 0px 6px 31px -6px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.titulo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo h4 {
+    font-family: "Poppins", sans-serif;
+    font-size: 19.66px;
+    font-weight: 700;
+    line-height: 0px;
+    text-align: left;
+}
+
+.titulo p {
+    font-family: "Inter", sans-serif;
+    font-size: 13.95px;
+    font-weight: 400;
+    line-height: 0px;
+    text-align: left;
+}
+
+.corpo {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.legenda {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.legenda2 {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.legenda p {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 0px;
+    text-align: left;
+}
+
+.legenda td {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+}
+
+@media (max-width: 1500px) {
+    .conteiner {
+        width: 230px;
+        height: 250px;
+    }
+}

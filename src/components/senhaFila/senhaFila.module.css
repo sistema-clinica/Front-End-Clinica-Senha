@@ -1,0 +1,31 @@
+.conteiner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-top: 0.5px solid rgba(0, 0, 0, 0.3)
+}
+
+.subConteiner {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.subConteiner h5 {
+    width: 59px;
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 0px;
+    text-align: left;
+}
+
+.conteiner td {
+    font-family: Helvetica;
+    font-size: 16.2px;
+    font-weight: 400;
+    line-height: 53px;
+    text-align: left;
+}

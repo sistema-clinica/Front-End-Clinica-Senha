@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styles from './senhaAtual.module.css';
 import efeito_sonoro from "../../assets/audio/attention_beep.mov"
 import {stompClient} from "../../services/webSocketService";
@@ -16,7 +16,8 @@ function SenhaAtual({ refreshSenhasAnteriores }) {
 
     stompClient.connect({}, (frame) => {
         stompClient.subscribe('/painel', (pacienteData) => {
-            chamarPaciente(JSON.parse(pacienteData.body).body);
+            const data = JSON.parse(pacienteData.body);
+            chamarPaciente(data);
         });
     }, onError)
 

@@ -1,4 +1,5 @@
 import {ChamarPaciente} from "./ChamarPaciente";
+import { chamarPacienteEspera } from "../../services/apiServices";
 
 export function ChamarTriagem() {
 
@@ -6,6 +7,7 @@ export function ChamarTriagem() {
         <ChamarPaciente
             destination={"/senha/espera"}
             tipo={"triagem"}
+            funcao={chamarPacienteEspera}
         />
     );
 }

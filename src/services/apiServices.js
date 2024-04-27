@@ -30,4 +30,22 @@ export const cadastrarNovoPaciente = async (pacienteData) => {
     return response.data
 }
 
+export const getAtendimentoFila = async () => {
+    const response = await axiosInstance.get("/atendimento/fila")
+    return response.data
+}
 
+export const getTriagemFila = async () => {
+    const response = await axiosInstance.get("/atendimento/fila/espera")
+    return response.data
+}
+
+export const getNaTriagem= async () => {
+    const response = await axiosInstance.get("/atendimento/triagem")
+    return response.data
+}
+
+export const getUtimoPaciente= async () => {
+    const response = await axiosInstance.get("/atendimento/ultimo")
+    return response.data
+}
