@@ -2,8 +2,6 @@ import React, {useState, useEffect} from 'react';
 import styles from './senhaAtual.module.css';
 import efeito_sonoro from "../../assets/audio/attention_beep.mov"
 import {stompClient} from "../../services/webSocketService";
-import {ChamarAtendimento} from "../ChamarPaciente/ChamarAtendimento";
-import {ChamarTriagem} from "../ChamarPaciente/ChamarTriagem";
 
 function SenhaAtual({ refreshSenhasAnteriores }) {
     const [senha, setSenha] = useState('');
@@ -42,8 +40,6 @@ function SenhaAtual({ refreshSenhasAnteriores }) {
                     <h3>Local de Atendimento</h3>
                     <p>{localDeAtendimento}</p>
                 </div>
-                <ChamarAtendimento/>
-                <ChamarTriagem/>
             </div>
 
         </section>

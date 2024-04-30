@@ -8,14 +8,26 @@ import Fila from '../../components/fila/fila';
 import { getAtendimentoFila, getNaTriagem, getTriagemFila } from '../../services/apiServices';
 import style from './menu-principal.module.css'
 import {stompClient} from "../../services/webSocketService";
-import { getUtimoPaciente } from '../../services/apiServices';
+import { getUtimoPaciente, chamarPacienteAtendimento, chamarPacienteEspera } from '../../services/apiServices';
+import ChamarGeral from '../../components/chamarGeral/chamarGeral';
 
 function MenuPricipal() {
     const [modalOpen, setModalOpen] = useState(false);
+    const [modalOpen2, setModalOpen2] = useState(false);
+    const [modalOpen3, setModalOpen3] = useState(false);
     const [localAtendimento, setLocalAtendimento] = useState("")
 
     const toggleModal = () => {
         setModalOpen(!modalOpen);
+    };
+
+    const toggleModal2 = () => {
+        setModalOpen2(!modalOpen2);
+    };
+
+    
+    const toggleModal3 = () => {
+        setModalOpen3(!modalOpen3);
     };
 
     const HandleChamarPaciente = async () => {
@@ -33,8 +45,8 @@ function MenuPricipal() {
             <BarraDeMenu/>
             <div className={style.menuConteudo}>
                 <div className={style.secaoBotao}>
-                    <Botao text='Chamar triagem' icon={<IoIosAddCircleOutline />} onClick={toggleModal} backgroundColor={"var(--azul-escuro)"}/>
-                    <Botao text='Chamar atendimento' icon={<IoIosAddCircleOutline />} onClick={toggleModal}/>
+                    <Botao text='Chamar triagem' icon={<IoIosAddCircleOutline />} onClick={toggleModal3} backgroundColor={"var(--azul-escuro)"}/>
+                    <Botao text='Chamar atendimento' icon={<IoIosAddCircleOutline />} onClick={toggleModal2}/>
                     <Botao text='Realizar triagem' icon={<IoIosAddCircleOutline />} onClick={toggleModal} backgroundColor={"var(--azul-escuro)"}/>
                     <Botao text='Chamar novamente' icon={<IoIosAddCircleOutline />} onClick={HandleChamarPaciente}/>
                     <Botao text='Novo Paciente' icon={<IoPersonAdd />} onClick={toggleModal} backgroundColor={"var(--azul-escuro)"}/>
@@ -51,6 +63,24 @@ function MenuPricipal() {
                 </div>
             </div>
             <CadastroPaciente isOpen={modalOpen}  onClose={toggleModal}/>
+            <ChamarGeral
+             isOpen={modalOpen2}
+             onClose={toggleModal2}
+             titulo={'Selecione o local de atendimento'}
+             placeholder={'Local de atendimento'}
+             funcao={chamarPacienteAtendimento}
+             titulo2={'Atendimento Finalizado'}
+             tesxt={'O atendimento do paciente foi finalizado'}
+             botao={'Chamar outro paciente para atendimento'}/>
+            <ChamarGeral
+             isOpen={modalOpen3}
+             onClose={toggleModal3}
+             titulo={'Selecione o local da Triagem'}
+             placeholder={'Local da Triagem'}
+             funcao={chamarPacienteEspera}
+             titulo2={'Triagem concluída'}
+             tesxt={'O paciente já está em triagem'}
+             botao={'Chamar outro paciente para triagem'}/>
         </div>
 
     );
