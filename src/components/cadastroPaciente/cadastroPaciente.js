@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import style from './cadastroPaciente.module.css';
 import Exit from './img/Icon.svg';
-import { useQuery } from "@tanstack/react-query";
 import CadastroComcluido from '../cadastroComluido/cadastroComcluido';
 import { cadastrarNovoPaciente } from '../../services/apiServices';
 import CPFInput from '../CPFInput/CPFInput';
