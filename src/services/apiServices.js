@@ -49,3 +49,8 @@ export const getUtimoPaciente= async () => {
     const response = await axiosInstance.get("/atendimento/ultimo")
     return response.data
 }
+
+export const realizarTriagem = async (pacienteData) => {
+    const response = await axiosInstance.post("/atendimento/triagem", pacienteData)
+    return response.data
+}

@@ -10,11 +10,13 @@ import style from './menu-principal.module.css'
 import {stompClient} from "../../services/webSocketService";
 import { getUtimoPaciente, chamarPacienteAtendimento, chamarPacienteEspera } from '../../services/apiServices';
 import ChamarGeral from '../../components/chamarGeral/chamarGeral';
+import RealizarTriagem from '../../components/realizarTriagem/realizarTriagem';
 
 function MenuPricipal() {
     const [modalOpen, setModalOpen] = useState(false);
     const [modalOpen2, setModalOpen2] = useState(false);
     const [modalOpen3, setModalOpen3] = useState(false);
+    const [modalOpen4, setModalOpen4] = useState(false);
     const [localAtendimento, setLocalAtendimento] = useState("")
 
     const toggleModal = () => {
@@ -28,6 +30,10 @@ function MenuPricipal() {
     
     const toggleModal3 = () => {
         setModalOpen3(!modalOpen3);
+    };
+
+    const toggleModal4 = () => {
+        setModalOpen4(!modalOpen4);
     };
 
     const HandleChamarPaciente = async () => {
@@ -47,7 +53,7 @@ function MenuPricipal() {
                 <div className={style.secaoBotao}>
                     <Botao text='Chamar triagem' icon={<IoIosAddCircleOutline />} onClick={toggleModal3} backgroundColor={"var(--azul-escuro)"}/>
                     <Botao text='Chamar atendimento' icon={<IoIosAddCircleOutline />} onClick={toggleModal2}/>
-                    <Botao text='Realizar triagem' icon={<IoIosAddCircleOutline />} onClick={toggleModal} backgroundColor={"var(--azul-escuro)"}/>
+                    <Botao text='Realizar triagem' icon={<IoIosAddCircleOutline />} onClick={toggleModal4} backgroundColor={"var(--azul-escuro)"}/>
                     <Botao text='Chamar novamente' icon={<IoIosAddCircleOutline />} onClick={HandleChamarPaciente}/>
                     <Botao text='Novo Paciente' icon={<IoPersonAdd />} onClick={toggleModal} backgroundColor={"var(--azul-escuro)"}/>
                 </div>
@@ -81,6 +87,7 @@ function MenuPricipal() {
              titulo2={'Triagem concluída'}
              tesxt={'O paciente já está em triagem'}
              botao={'Chamar outro paciente para triagem'}/>
+            <RealizarTriagem isOpen={modalOpen4}  onClose={toggleModal4}/>
         </div>
 
     );
