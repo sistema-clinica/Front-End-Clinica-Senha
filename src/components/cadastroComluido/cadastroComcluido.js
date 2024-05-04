@@ -1,6 +1,6 @@
 import React from "react";
 import style from './cadastroComcluido.module.css';
-import Exit from './img/Icon.svg';
+import Exit from '../../assets/images/Exit.svg';
 
 function CadastroComcluido({ isOpen, onClose, senha }) {
     return (

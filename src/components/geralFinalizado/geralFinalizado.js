@@ -1,7 +1,7 @@
 // atendimentoFinalizado.js
 import style from './geralFinalizado.module.css'
 import { useState } from 'react';
-import Exit from './img/Icon.svg'
+import Exit from '../../assets/images/Exit.svg';
 
 function GeralFinalizado({ isOpen, onClose, onReturn, tesxt, titulo, botao }) {
 

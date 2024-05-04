@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import style from './realizarTriagem.module.css';
-import Exit from './img/Icon.svg';
+import Exit from '../../assets/images/Exit.svg';
 import { getNaTriagem, realizarTriagem } from '../../services/apiServices';
 
 function RealizarTriagem({ isOpen, onClose }) {
