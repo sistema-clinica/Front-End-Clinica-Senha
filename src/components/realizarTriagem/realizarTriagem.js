@@ -4,16 +4,27 @@ import Exit from './img/Icon.svg';
 import { getNaTriagem, realizarTriagem } from '../../services/apiServices';
 
 function RealizarTriagem({ isOpen, onClose }) {
-    const [senhasPendentes, setSenhasPendentes] = useState([]);
-    const [senha, setSenha] = useState('');
-    const [urgencia, setUrgencia] = useState('');
-    const [detalhesSintomas, setDetalhesSintomas] = useState('');
+    const [pacientesPendentes, setPacientesPendentes] = useState([]);
+    const [formData, setFormData] = useState({
+        senha: '',
+        urgencia: null,
+        detalhesSintomas: ''
+    })
+
+    const handleInputChange = (e) => {
+        const updatedFormData = {
+            ...formData,
+            [e.target.name]: e.target.value,
+        };
+        setFormData(updatedFormData);
+        console.log(formData);
+    };
 
     useEffect(() => {
         const fetchAtendimentosPendentes = async () => {
             try {
                 const response = await getNaTriagem();
-                setSenhasPendentes(response.map(atendimento => atendimento.senha));
+                setPacientesPendentes(response);
             } catch (error) {
                 console.error('Erro ao obter atendimentos pendentes para triagem:', error);
             }
@@ -23,16 +34,8 @@ function RealizarTriagem({ isOpen, onClose }) {
     }, []);
 
     const HandleRealizarTriagem = async () => {
-        const dadosUsuario = {
-            senha: senha,
-            urgencia: urgencia,
-            detalheSintomas: detalhesSintomas
-        };
-
-        console.log(dadosUsuario);
-
         try {
-            await realizarTriagem(dadosUsuario);
+            await realizarTriagem(formData);
             onClose();
         } catch (error) {
             console.error('Erro ao realizar a triagem:', error);
@@ -53,30 +56,30 @@ function RealizarTriagem({ isOpen, onClose }) {
                                 <div className={style.meioImfo}>
                                     <p>Paciente</p>
                                     <select
-                                        name="selecionarPaciente"
-                                        value={senha}
-                                        onChange={(e) => setSenha(e.target.value)}
+                                        name="senha"
+                                        value={formData.senha}
+                                        onChange={(e) => handleInputChange(e)}
                                     >
-                                        {senhasPendentes.map(senha => (
-                                            <option key={senha} value={senha}>{senha}</option>
+                                        {pacientesPendentes.map((paciente, index) => (
+                                            <option key={index} value={paciente.senha}>{paciente.nome} - {paciente.senha}</option>
                                         ))}
                                     </select>
                                     <p>Urgência</p>
                                     <select
-                                        name="selecionarUrgencia"
-                                        value={urgencia}
-                                        onChange={(e) => setUrgencia(e.target.value)}
+                                        name="urgencia"
+                                        value={formData.urgencia}
+                                        onChange={(e) => handleInputChange(e)}
                                     >
-                                        <option value="NORMAL">Normal</option>
-                                        <option value="Preferencial">Preferencial</option>
-                                        <option value="Urgente">Urgente</option>
+                                        <option disabled selected>Selecione a Urgência</option>
+                                        <option key={1} value="NORMAL">Normal</option>
+                                        <option key={2} value="PREFERENCIAL">Preferencial</option>
+                                        <option key={3} value="URGENTE">Urgente</option>
                                     </select>
                                     <p>Detalhamento de Sintomas</p>
-                                    <input
-                                        type="text"
-                                        name="detalhamentoSintomas"
-                                        value={detalhesSintomas}
-                                        onChange={(e) => setDetalhesSintomas(e.target.value)}
+                                    <textarea
+                                        name="detalhesSintomas"
+                                        value={formData.detalhesSintomas}
+                                        onChange={(e) => handleInputChange(e)}
                                     />
                                 </div>
                             </div>
