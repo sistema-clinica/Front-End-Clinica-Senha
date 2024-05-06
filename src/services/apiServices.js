@@ -2,7 +2,7 @@ import {axiosInstance} from './axiosInstance'
 
 export const fazerLogin = async (authData) => {
     const response = await axiosInstance.post("/login", authData)
-    return response.data
+    return response
 }
 
 export const cadastrarNovoAdmin = async (adminData) => {

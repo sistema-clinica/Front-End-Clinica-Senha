@@ -1,36 +1,12 @@
 import Logo from '../../assets/images/Vector.png';
 import styles from './menuLogin.module.css';
-import {useState} from 'react';
-import {fazerLogin} from "../../services/apiServices";
-import { useNavigate } from 'react-router-dom';
+import {useContext, useState} from 'react';
+import {Context} from "../../context/AuthContext";
 
 function MenuLogin() {
     const [username, setUsername] = useState('');
     const [senha, setSenha] = useState('');
-    const [token, setToken] = useState('')
-    const navegete = useNavigate();
-
-    const handleNavigate = (route) => {
-        navegete(route);
-    };
-
-
-    const HandleLogin = async () => {
-        const dadosUsuario = {
-            username: username,
-            senha: senha
-        };
-
-        try {
-            const response = await fazerLogin(dadosUsuario);
-            setToken(response.token);
-            localStorage.setItem('token', response.token);
-            handleNavigate('/');
-        } catch (error) {
-            console.log(error);
-            alert('SENHA ou USUARIO incoretos')
-        }
-    };
+    const { handleLogin } =  useContext(Context)
 
     return (
         <div className={styles.quadradoLogin}>
@@ -53,7 +29,7 @@ function MenuLogin() {
                 ></input>
             </div>
             <div className={styles.botaoLogin}>
-                <button onClick={HandleLogin}>
+                <button onClick={() => handleLogin({username, senha})}>
                     Login
                 </button>
             </div>
