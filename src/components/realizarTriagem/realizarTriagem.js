@@ -2,14 +2,20 @@ import { useEffect, useState } from 'react';
 import style from './realizarTriagem.module.css';
 import Exit from '../../assets/images/Exit.svg';
 import { getNaTriagem, realizarTriagem } from '../../services/apiServices';
+import GeralFinalizado from '../geralFinalizado/geralFinalizado';
 
 function RealizarTriagem({ isOpen, onClose }) {
     const [pacientesPendentes, setPacientesPendentes] = useState([]);
+    const [modalOpen, setModalOpen] = useState(false);
     const [formData, setFormData] = useState({
         senha: '',
         urgencia: null,
         detalhesSintomas: ''
-    })
+    });
+
+    const toggleModal = () => {
+        setModalOpen(!modalOpen);
+    };
 
     const handleInputChange = (e) => {
         const updatedFormData = {
@@ -36,11 +42,17 @@ function RealizarTriagem({ isOpen, onClose }) {
     const HandleRealizarTriagem = async () => {
         try {
             await realizarTriagem(formData);
+            toggleModal();
             onClose();
         } catch (error) {
             console.error('Erro ao realizar a triagem:', error);
         }
     };
+    
+    const onReturn = () => {
+        toggleModal();
+        onClose();
+    }
 
     return (
         <>
@@ -60,6 +72,7 @@ function RealizarTriagem({ isOpen, onClose }) {
                                         value={formData.senha}
                                         onChange={(e) => handleInputChange(e)}
                                     >
+                                        <option selected>Selecione o Paciente</option>
                                         {pacientesPendentes.map((paciente, index) => (
                                             <option key={index} value={paciente.senha}>{paciente.nome} - {paciente.senha}</option>
                                         ))}
@@ -93,6 +106,7 @@ function RealizarTriagem({ isOpen, onClose }) {
                     </div>
                 </div>
             )}
+            <GeralFinalizado isOpen={modalOpen} onClose={toggleModal} onReturn={onReturn} tesxt={'O paciente já está na fila de espera para atendimento'} titulo={'Triagem concluída'} botao={'Chamar outro paciente para triagem'} />
         </>
     );
 }
