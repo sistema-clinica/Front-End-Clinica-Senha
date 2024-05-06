@@ -24,7 +24,7 @@ function MenuLogin() {
         try {
             const response = await fazerLogin(dadosUsuario);
             setToken(response.token);
-            console.log(token);
+            localStorage.setItem('token', response.token);
             handleNavigate('/');
         } catch (error) {
             console.log(error);

@@ -28,7 +28,7 @@ const MenuCadastro = () => {
         try {
             const response = await cadastrarNovoAdmin(dadosUsuario);
             setToken(response.token);
-            console.log(token);
+            localStorage.setItem('token', response.token);
             handleNavigate('/');
         } catch (error) {
             console.log(error);
