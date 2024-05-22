@@ -15,6 +15,7 @@
     font-weight: 700;
     color: white;
     border: none;
+    transition: all 0.3s ease; /* Transição suave para mudanças de propriedades */
 }
 
 .conteiner svg {
@@ -22,8 +23,15 @@
     stroke-width: 15;
 }
 
+/* Animação para quando o mouse passa por cima */
 .conteiner:hover {
     cursor: pointer;
+    transform: scale(1.05); /* Aumenta um pouco o tamanho */
+}
+
+/* Animação para quando o botão é clicado */
+.conteiner:active {
+    transform: scale(0.95); /* Reduz um pouco o tamanho */
 }
 
 @media (max-width: 1500px){

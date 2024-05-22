@@ -109,6 +109,7 @@
     font-weight: 400;
     line-height: 24px;
     text-align: center;
+    transition: all 0.3s ease;
 }
 
 .comfirmar {
@@ -125,6 +126,29 @@
     text-align: center;
     background: rgba(2, 43, 58, 1);
     color: rgba(250, 250, 250, 1);
+    transition: all 0.3s ease;
 
+}
+
+/* Animação para quando o mouse passa por cima */
+.cancelar:hover {
+    cursor: pointer;
+    transform: scale(1.05); /* Aumenta um pouco o tamanho */
+}
+
+/* Animação para quando o botão é clicado */
+.cancelar:active {
+    transform: scale(0.95); /* Reduz um pouco o tamanho */
+}
+
+/* Animação para quando o mouse passa por cima */
+.comfirmar:hover {
+    cursor: pointer;
+    transform: scale(1.05); /* Aumenta um pouco o tamanho */
+}
+
+/* Animação para quando o botão é clicado */
+.comfirmar:active {
+    transform: scale(0.95); /* Reduz um pouco o tamanho */
 }
 
