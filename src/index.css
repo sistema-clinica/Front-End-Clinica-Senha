@@ -14,7 +14,7 @@ code {
 
 :root {
   --cinza-claro: #E3e3e3;
-  --azul-escuro:  rgba(2, 43, 58, 1);
+  --azul-escuro:  rgb(2, 43, 58);
   --azul-claro:rgba(31, 122, 140, 1);
 
 }

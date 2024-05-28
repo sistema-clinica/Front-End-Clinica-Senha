@@ -2,7 +2,7 @@ import {axiosInstance} from './axiosInstance'
 
 export const fazerLogin = async (authData) => {
     const response = await axiosInstance.post("/login", authData)
-    return response.data
+    return response
 }
 
 export const cadastrarNovoAdmin = async (adminData) => {
@@ -47,5 +47,10 @@ export const getNaTriagem= async () => {
 
 export const getUtimoPaciente= async () => {
     const response = await axiosInstance.get("/atendimento/ultimo")
+    return response.data
+}
+
+export const realizarTriagem = async (pacienteData) => {
+    const response = await axiosInstance.post("/atendimento/triagem", pacienteData)
     return response.data
 }

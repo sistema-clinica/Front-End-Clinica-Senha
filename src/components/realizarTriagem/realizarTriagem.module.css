@@ -65,21 +65,34 @@
     font-family: Inter;
     font-size: 17.41px;
     font-weight: 700;
-    line-height: 24.88px;
     text-align: left;
 }
 
-.meioImfo input {
-    width: 100%;
-    height: 50px;
-    border: 1.24px solid rgba(224, 224, 224, 1);
+.meioImfo select {
+    width: 398px;
+    height: 54.72px;
+    border-radius: 4.97px;
     box-shadow: 0px 1.24px 2.49px 0px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
+    border: 1.24px solid rgba(224, 224, 224, 1);
     font-family: Inter;
     font-size: 19.9px;
     font-weight: 400;
     line-height: 29.85px;
     text-align: left;
+}
+
+.meioImfo textarea {
+    width: 398px;
+    height: 129px;
+    border: 1px solid rgba(224, 224, 224, 1);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 25px;
+    text-align: left;
+    resize: none;
+    border-radius: 4px;
 }
 
 .baixo {
@@ -109,7 +122,6 @@
     font-weight: 400;
     line-height: 24px;
     text-align: center;
-    transition: all 0.3s ease;
 }
 
 .comfirmar {
@@ -151,4 +163,3 @@
 .comfirmar:active {
     transform: scale(0.95); /* Reduz um pouco o tamanho */
 }
-

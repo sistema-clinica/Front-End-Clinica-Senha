@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import style from './cadastroPaciente.module.css';
-import Exit from './img/Icon.svg';
+import Exit from '../../assets/images/Exit.svg';
 import CadastroComcluido from '../cadastroComluido/cadastroComcluido';
 import { cadastrarNovoPaciente } from '../../services/apiServices';
 import CPFInput from '../CPFInput/CPFInput';
