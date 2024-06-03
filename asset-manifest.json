@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/Front-End-Clinica-Senha/static/css/main.71274f3b.css",
+    "main.js": "/Front-End-Clinica-Senha/static/js/main.02f42e5b.js",
+    "static/media/detalheDoMenu.png": "/Front-End-Clinica-Senha/static/media/detalheDoMenu.1c5036f5285dd40efce8.png",
+    "static/media/Fundo.jpg": "/Front-End-Clinica-Senha/static/media/Fundo.6e954676b31df4b4c254.jpg",
+    "static/media/attention_beep.mov": "/Front-End-Clinica-Senha/static/media/attention_beep.7c1dabca755d152bda25.mov",
+    "index.html": "/Front-End-Clinica-Senha/index.html",
+    "static/media/Exit.svg": "/Front-End-Clinica-Senha/static/media/Exit.5934e5b8da433ebad947bfc7856d057c.svg",
+    "main.71274f3b.css.map": "/Front-End-Clinica-Senha/static/css/main.71274f3b.css.map",
+    "main.02f42e5b.js.map": "/Front-End-Clinica-Senha/static/js/main.02f42e5b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.71274f3b.css",
+    "static/js/main.02f42e5b.js"
+  ]
+}
