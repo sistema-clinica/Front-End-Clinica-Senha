@@ -68,3 +68,5 @@ root.render(
       <RouterProvider router={router} />
   </React.StrictMode>
 );
+
+app.use('*', express.static( resolve( __dirname, './build' ) ) ) 
